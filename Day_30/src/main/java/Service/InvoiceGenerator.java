@@ -1,7 +1,7 @@
 package Service;
-
 import Entity.InvoiceSummary;
 import Entity.Ride;
+import Enum.RideType;
 
 public class InvoiceGenerator {
 
@@ -42,5 +42,35 @@ public class InvoiceGenerator {
         }
         return new InvoiceSummary(rides.length,totalFare);
 
+    }
+    public double calculateFare(
+            Ride ride) {
+
+        double fare;
+
+        if(ride.type
+                ==
+                RideType.Normal) {
+
+            fare =
+                    (ride.distance * 10)
+                            +
+                            (ride.time * 1);
+
+            return Math.max(
+                    fare,
+                    5
+            );
+        }
+
+        fare =
+                (ride.distance * 15)
+                        +
+                        (ride.time * 2);
+
+        return Math.max(
+                fare,
+                20
+        );
     }
 }
